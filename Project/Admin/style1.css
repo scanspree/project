@@ -51,7 +51,7 @@ body{
 {
     background-color: #f87116;
 }
-#custdtls,#orderdtls,#adpd,#tgpd,#pdlt {
+#custdtls,#orderdtls,#adpd,#tgpd,#pdlt,#adct {
     display: none;
     background-color: white;
     border-top-left-radius: 30px;

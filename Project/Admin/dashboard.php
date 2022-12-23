@@ -20,7 +20,7 @@ if (isset($_POST['add'])) {
       $pname = $_POST['productname'];
       $price = $_POST['price'];
 
-      $sql2 = "INSERT INTO `pdt_invt`(`product_id`, `product_name`, `product_price`) VALUES ('$pid',' $pname','$price')";
+      $sql2 = "INSERT INTO `pdt_invt`(`product_id`, `product_name`, `product_price`) VALUES ('$pid','$pname','$price')";
 
       $result2 = $conn->query($sql2); //fire query
 
@@ -28,6 +28,43 @@ if (isset($_POST['add'])) {
         echo "
         <script>
         alert('Product Details Added Successfully');
+        </script>";
+      } else {
+        echo "error: " . $sql2 . "<br>" . $conn->error;
+      }
+    }
+  } else {
+    echo "<script>
+    alert('Cannot run query');
+    </script>";
+  }
+}
+
+if (isset($_POST['addcart'])) {
+  $sql1 = "SELECT * FROM `cart` WHERE  `cart_id` = '$_POST[cart_id]' OR `esp_id`= '$_POST[espid]' ";
+  $result1 = $conn->query($sql1);
+  if ($result1 == TRUE) {
+    if ($result1->num_rows > 0) {
+      $row1 = $result1->fetch_assoc();
+      if ($row1['cart_id'] == $_POST['cart_id'] || $row1['esp_id'] == $_POST['espid']) {
+        echo "
+        <script>
+        alert('Cart already Added');
+        </script>
+        ";
+      }
+    } else {
+      $cid = $_POST['cart_id'];
+      $espid = $_POST['espid'];
+      
+      $sql2 = "INSERT INTO `cart`(`cart_id`, `esp_id`) VALUES ('$cid','$espid')";
+
+      $result2 = $conn->query($sql2); //fire query
+
+      if ($result2 == TRUE) {
+        echo "
+        <script>
+        alert('Cart Details Added Successfully');
         </script>";
       } else {
         echo "error: " . $sql2 . "<br>" . $conn->error;
@@ -82,6 +119,10 @@ if (isset($_POST['add'])) {
       document.getElementById("pdlt").style.display = "block";
 
     }
+    function ct() {
+      document.getElementById("options").style.visibility = "hidden";
+      document.getElementById("adct").style.display = "block";
+    }
 
     function bk() {
       document.getElementById("custdtls").style.display = "none";
@@ -89,6 +130,7 @@ if (isset($_POST['add'])) {
       document.getElementById("adpd").style.display = "none";
       document.getElementById("tgpd").style.display = "none";
       document.getElementById("pdlt").style.display = "none";
+      document.getElementById("adct").style.display = "none";
       document.getElementById("options").style.visibility = "visible";
     }
 
@@ -317,6 +359,32 @@ if (isset($_POST['add'])) {
       </div>
     </div>
 
+
+    <div class="row justify-content-center">
+      <div class="col-md-6 " id="adct">
+        <br>
+        <h4 id="hd">Add Cart</h4>
+        <button type="button" class="btn-close" id="hd" onclick="bk();"></button>
+        <form method="post">
+        <div class="form-floating mb-3 mt-3">
+          <input type="text" class="form-control" id="cart_id" name="cart_id" placeholder="cart_id" required>
+          <label for="product_id">Cart id</label>
+        </div>
+        <div class="form-floating mb-3 mt-3">
+          <input type="text" class="form-control" id="espid" name="espid" placeholder="espid" required>
+          <label for="tagid">ESP id</label>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-6 text-end ">
+            <input class="btn" type="submit" id="btn" role="button" name="addcart" value="Add">
+          </div>
+        </div>
+        </form>
+        <br>
+      </div>
+    </div>
+
     <br>
 
     <div class="row">
@@ -335,6 +403,7 @@ if (isset($_POST['add'])) {
       <a class="btn " id="btn" role="button" onclick="cd();"><b>Customer details</b></a>
       <a class="btn " id="btn" role="button" onclick="pl();" name="pd"><b>Product List</b></a>
       <a class="btn " id="btn" role="button" onclick="ol();"><b>Order list</b></a>
+      <a class="btn " id="btn" role="button" onclick="ct();"><b>Add cart</b></a>
 
     </div>
     <br>
