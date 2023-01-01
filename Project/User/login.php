@@ -8,6 +8,7 @@ if (isset($_POST['login'])) {
     if ($result == true) {
         if ($result->num_rows == 1) {
             $row = $result->fetch_assoc();
+            if ($row['is_verified'] == 1) {
                 if (password_verify($_POST['password'], $row['password'])) {
                     $_SESSION['logged_in'] = TRUE;
                     $_SESSION['username'] = $row['username'];
@@ -18,6 +19,12 @@ if (isset($_POST['login'])) {
                     window.location.href='login.php';
                     </script>";
                 }
+            }else{
+                echo "<script>
+                alert('Email not verified');
+                window.location.href='login.php';
+                </script>";
+            }
         } else {
             echo "<script>
             alert('Email/username not registered');

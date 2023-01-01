@@ -1,5 +1,6 @@
 <?php
 include("connection.php");
+session_start();
 
 if(isset($_GET['email']) && isset($_GET['v_code']))
 {
@@ -18,8 +19,10 @@ if(isset($_GET['email']) && isset($_GET['v_code']))
           {
             echo "<script>
             alert('Email verification successful');
-            window.location.href='homepg.php';
             </script>";
+            $_SESSION['logged_in'] = TRUE;
+            $_SESSION['username'] = $row['username'];
+            header("location: scanpg.php");
           }
           else
           {

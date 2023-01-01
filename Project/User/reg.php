@@ -5,7 +5,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-function sendMail($email)
+function sendMail($email,$v_code)
 {
   require 'PHPMailer/PHPMailer.php';
   require 'PHPMailer/SMTP.php';
@@ -32,11 +32,12 @@ function sendMail($email)
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Email verification from ScanSpree';
     $mail->Body    = "Thanks for registration
-      click the link below to verify the email address";
+    click the link below to verify the email address
+    <a href='http://localhost/project/user/verify.php?email=$email&v_code=$v_code'>verify</a>";
     
 
     $mail->send();
-    echo "<script>alert('sended');</script>";
+    echo "<script>alert('Check your mail to verify your account');</script>";
     return true;
   } catch (Exception $e) {
     echo "<script>alert('exc');</script>";
@@ -76,19 +77,18 @@ if (isset($_POST['submit'])) {
       $password = password_hash($_POST['password'],PASSWORD_BCRYPT);
     
       $v_code = bin2hex(random_bytes(8));
-      $sql = "INSERT INTO `customer_login`(`name`, `username`, `gender`,`dob`, `email`, `contact`, `password`) VALUES ('$name','$username','$gender','$dob','$email',$contact,'$password')";
+      $sql = "INSERT INTO `customer_login`(`name`, `username`, `gender`, `email`,`dob`, `contact`, `password`, `ver_code`, `is_verified`) VALUES ('$name','$username','$gender','$email','$dob',$contact,'$password','$v_code','0')";
     
       $result = $conn->query($sql); //fire query
-      $semail = sendMail($email);
+      $semail = sendMail($email,$v_code);
     
       if ($result == TRUE && $semail == true) {
         echo "
         <script>
         alert('Registration Successful');
+        window.location.href='login.php';
         </script>";
-        $_SESSION['logged_in'] = TRUE;
-        $_SESSION['username'] = $_POST['username'];
-        header("location: scanpg.php");
+        
         
       } else {
         echo "error: " . $sql . "<br>" . $conn->error;
