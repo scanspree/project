@@ -10,7 +10,7 @@
 }
 .navbar
 {
-    height: 115px;
+    height: 180px;
     background-color: #d9d9d9;
     justify-content: center;
     
@@ -32,27 +32,32 @@
 
 }
 div.vh-75.container-fluid{
-    height:517px;
+
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
     background-color:#FFC220;
     margin-top: 10px;
     padding-bottom: 10px;
+    box-shadow: 0 -4px 2px -2px rgb(136, 133, 133);
+   
 }
 div.container-fluid{
-    height:517px;
+ 
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
     background-color:#FFC220;
     margin-top: 10px;
     padding-bottom: 10px;
+    box-shadow: 0 -6px 15px -6px rgb(136, 133, 133);
+    height:500px;
 }
 body.container-fluid{
     background-color: #d9d9d9;
+    
+     
 }
 body{
     background-color: #d9d9d9;
-    
 }
 #btn
 {
