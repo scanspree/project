@@ -46,8 +46,8 @@
 
         <div class="row">
             <div class="text-center d-grid gap-2" id="col1">
-                <button class="btn " id="btn" href="login.php" role="button"><b>Login</b></button>
-                <button class="btn " id="btn" href="reg.php" role="button"><b>Register</b></button>
+                <a class="btn " id="btn" href="login.php" role="button"><b>Login</b></a>
+                <a class="btn " id="btn" href="reg.php" role="button"><b>Register</b></a>
             </div>
         </div>
 
