@@ -14,7 +14,7 @@ session_start();
   <!--<link rel="stylesheet" href="css/bootstrap.css">-->
   <link rel="stylesheet" href="src/styles.css" />
   <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"></script>
-  
+
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="style1.css">
@@ -31,6 +31,8 @@ session_start();
       document.getElementById("VidTut").style.display = "none";
       document.getElementById("Scanner").style.display = "none";
       document.getElementById("col1").style.display = "none";
+      document.getElementById("c").style.display = "none";
+      document.getElementById("p").style.display = "none";
       document.getElementById("cont").style.display = "block";
     }
   </script>
@@ -38,78 +40,66 @@ session_start();
 </head>
 
 <body class="container-fluid">
-  <nav class="navbar vh-15">
-    <div class="container">
-      <a class="navbar-brand" id="logo" href="#">
-        <img src="images/cartlogo.png" alt="ScanSpree" width="60" height="60" class="d-inline-block align-text-top">
-        <b>ScanSpree</b>
-      </a>
-      <a id="user">
-        <?php
-        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == TRUE) {
-          echo "<h4 id='h'>$_SESSION[username]</h4> <a class='btn btn-primary' href='logout.php' role='button'>LOGOUT</a>";
-        }
 
-        ?>
-      </a>
-    </div>
-  </nav>
-
-  <div class="vh-75 container-fluid" id="1">
-    <br><br><br>
-    <div class="row justify-content-center">
-
-      <div class="col-md-6 text-center" id="col1">
-        <br><br>
-        <h3>Welcome to ScanSpree</h3>
-        <?php
-        echo "<h3><strong>$_SESSION[username]</strong></h3>";
-        ?><br><br>
-        <p>Enjoy a new shopping experience with ScanSpree!</p>
-
-      </div>
-
-    </div>
-
-    <br>
-    <div class="row" id="VidTut">
-      <div class="col-3 "></div>
-      <div class="col-6 text-center " id="col1">
-        <a class="btn " id="btn" onclick="" role="button"><b>Video tutorial</b></a>
-      </div>
-      <div class="col-3"></div>
-    </div>
-
-    <br>
-
-    <div class="row" id="Scanner">
-      <div class="col-3 "></div>
-      <div class="col-6 text-center " id="col1">
-        <a class="btn " id="btn" onclick="qr();" role="button"><b>Scan QR To Begin</b></a>
-      </div>
-      <div class="col-3"></div>
-    </div>
-
-    <div class="row justify-content-center">
-       <div class="col-3"></div>
-          <div class="col-md-6 " id="cont">
-          <h1>QR Code Scanner</h1>
-
-          <a id="btn-scan-qr">
-          <img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/07/1499401426qr_icon.svg">
-          <a />
-
-          <canvas hidden="" id="qr-canvas"></canvas>
-
-           <div id="qr-result" hidden="">
-            <b>Data:</b> <span id="outputData"></span>
-          </div>
-          <script src="src/qrCodeScanner.js"></script>
-        </div>
-      <div class="col-3"></div>
-    </div>
-
+  <div class="out" id="c"><a class="btn-close" href='logout.php' role='button'></a></div>
+<br><br><br>
+  <div class="img" id="p">
+    <img src="images/profile.svg" class="rounded-circle" id="profile">
+    <br><br>
+    <div>
+    <?php
+    if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == TRUE) {
+      echo "<h4>$_SESSION[username]</h4>";
+    }
+    ?>
   </div>
+</div>
+
+  <br>
+  <br>
+  <br>
+
+  <br>
+  <div class="row" id="VidTut">
+    <div class="col-3 "></div>
+    <div class="col-6 text-center " id="col1">
+      <a class="btn btn-outline-dark " id="btnscan" onclick="" role="button"><b>Video tutorial</b></a>
+    </div>
+    <div class="col-3"></div>
+  </div>
+
+  <br>
+
+  <div class="row" id="Scanner">
+    <div class="col-3 "></div>
+    <div class="col-6 text-center " id="col1">
+      <a class="btn btn-outline-dark" id="btnscan" onclick="qr();" role="button"><b>Scan QR To Begin</b></a>
+    </div>
+    <div class="col-3"></div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-3"></div>
+    <div class="col-md-6 " id="cont">
+    Scan QR Code
+    <br>
+     <a id="btn-scan-qr">
+        <img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/07/1499401426qr_icon.svg">
+        <a />
+       
+        <canvas hidden="" id="qr-canvas"></canvas>
+
+        <div id="qr-result" hidden="">
+          <b>Data:</b> <span id="outputData"></span>
+        </div>
+        <script src="src/qrcodescanner.js"></script>
+    </div>
+    <div class="col-3"></div>
+  </div>
+
+
+
+
 
 
 </body>

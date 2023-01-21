@@ -2,6 +2,7 @@ const qrcode1 = window.qrcode;
 
 const video = document.createElement("video");
 const canvasElement = document.getElementById("qr-canvas");
+const head = document.getElementById("h");
 const canvas = canvasElement.getContext("2d");
 
 const qrResult = document.getElementById("qr-result");
@@ -33,6 +34,7 @@ btnScanQR.onclick = () => {
       qrResult.hidden = true;
       btnScanQR.hidden = true;
       canvasElement.hidden = false;
+    
       video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
       video.srcObject = stream;
       video.play();

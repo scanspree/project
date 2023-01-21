@@ -3,7 +3,7 @@ include("connection.php");
 session_start();
 
 if (isset($_POST['login'])) {
-    $sql = "SELECT * FROM `customer_login` WHERE `email`='$_POST[username]' OR `username`='$_POST[username]'";
+    $sql = "SELECT * FROM `customer_login` WHERE `email`='$_POST[username]' OR `contact`='$_POST[username]'";
     $result = $conn->query($sql);
     if ($result == true) {
         if ($result->num_rows == 1) {
@@ -19,7 +19,7 @@ if (isset($_POST['login'])) {
                     window.location.href='login.php';
                     </script>";
                 }
-            }else{
+            } else {
                 echo "<script>
                 alert('Email not verified');
                 window.location.href='login.php';
@@ -50,62 +50,86 @@ if (isset($_POST['login'])) {
 
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Sharp" rel="stylesheet">
     <script src="js/bootstrap.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Harmattan&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Harmattan&display=swap');
+    </style>
+    <style>
+        <?php include "style1.css" ?>
+    </style>
 </head>
 
 <body>
 
-    <nav class="navbar ">
-        <div class="container">
-            <a class="navbar-brand" id="logo" href="#">
-                <img src="cartlogo.png" alt="ScanSpree" width="60" height="60" class="d-inline-block align-text-top">
-                <b>ScanSpree</b>
-            </a>
-        </div>
-    </nav>
+    <a class="btn " id="btn" href="homepg.php" name="back" type="button" ><span class="material-icons-sharp mysize">
+            keyboard_backspace
+        </span></a>
 
-    <div class="vh-100 container-fluid">
-        <h2>
-            <div class="row justify-content-center mt-3">Login Form</div>
-        </h2>
+    <h2>
+        <div class="row justify-content-center mt-3">Login to your account</div>
+    </h2>
+
+    <div class="container-fluid fixed-bottom" style="height: 80%;">
+
         <div class="container">
 
             <form method="POST" action="" name="logform">
                 <div class="row" id="row1">
-                    <div class="col">
-                        <div class="form-floating mb-3 mt-3">
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Email/Username" required>
-                            <label for="username">Email/Username</label>
+                    <div class="col-1"></div>
+                    <div class="col-10" id="cl">
+                        <div class="mb-3 mt-3">
+                            <div class="input_group">
+                                <span class="material-icons-sharp mysize">mail_outline</span>
+                                <input type="text" id="username" name="username" placeholder="Email/Phone Number" required>
+                            </div>
                         </div>
                     </div>
+                    <div class="col-1"></div>
                 </div>
 
-                <div class="row" id="row2">
-                    <div class="col">
-                        <div class="form-floating mb-3 mt-3">
-                            <input type="password" class="form-control" id="password" name="password" placeholder="password" required>
-                            <label for="password">Password</label>
-                            <input type="checkbox" onclick="toggle();">Show Password
+                <div class="row" id="row1">
+                    <div class="col-1"></div>
+                    <div class="col-10" id="cl">
+                        <div class="mb-3 mt-3">
+                            <div class="input_group">
+                                <span class="material-icons-sharp mysize">vpn_key</span>
+                                <input type="password" id="password" name="password" placeholder="Password" required>
+                            </div>
+                            <input type="checkbox" onclick="toggle();">Show Password<br>
+                           
                         </div>
                     </div>
+                    <div class="col-1"></div>
+
                 </div>
-
-
-                <!-- Button to Open the Modal -->
+                <div class="row" id="row1">
+                    <div class="col-1"></div>
+                    <div class="col-10" id="f">
+                    <div>
                 <a class="fp" href="#" data-bs-toggle="modal" data-bs-target="#myModal">
-                    Forgot password ?
-                </a>
+                               <b> Forgot password ?</b>
+                            </a>
+                            </div>
+                            </div>
+                    </div>
+                    <div class="col-1"></div>
 
+                </div>
                 <div class="row mt-3">
                     <div class="col-3 "></div>
-                    <div class="col-6 text-center " id="col1">
-                        <a class="btn " id="btn" href="homepg.php" name="back" role="button"><b>Cancel</b></a>
-                        <input class="btn" type="submit" id="btn" href="#" role="button" name="login" value="Login">
+                    <div class="text-center d-grid gap-2 col-6 " id="col1">
+
+                        <input class="btn btn-outline-dark" type="submit" id="btn" href="#" type="button" name="login" value="LOGIN">
+
                     </div>
                     <div class="col-3"></div>
                 </div>
+
 
 
             </form>
@@ -138,7 +162,7 @@ if (isset($_POST['login'])) {
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="submit" name="reset" class="btn btn-primary">Send Link</button>
+                    <button type="submit" name="reset" class="btn btn-warning">Send Link</button>
                 </div>
                 </form>
             </div>

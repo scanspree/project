@@ -1,28 +1,51 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>QR Code Scanner</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <link rel="stylesheet" href="src/styles.css" />
-    <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"></script>
-  </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="600;URL=homepg.php">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="style1.css">
+    <!--<style>
+        body{
+            background-image: url('images/bg.png');
+            background-size: auto;
+            background-repeat: no-repeat;
+            height: auto;
+            max-width: 100%;
+        }
+    </style>-->
+    <style>
+        <?php include "style1.css" ?>
+    </style>
+</head>
+<body>
+    <div class="container-fluid" id="index">
 
-  <body>
-    <div id="container">
-      <h1>QR Code Scanner</h1>
+        <div class="row fixed-top" id="top">
+            
+        <div class="col" id="t1"><img src="images/graphics1.svg" alt="g1" width="280px" height="100%"  ></div>
+        </div>
+        
 
-      <a id="btn-scan-qr">
-        <img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/07/1499401426qr_icon.svg">
-      <a/>
+        <div class="row col-sm-1 justify-content-center">
+            <a class="navbar-brand" id="logo" href="#">
+                <img src="images\ss.png" alt="ScanSpree" width="280px" height="30%" class="d-inline-block align-text-top  " !important>
+            </a>
+        </div>
 
-      <canvas hidden="" id="qr-canvas"></canvas>
 
-      <div id="qr-result" hidden="">
-        <b>Data:</b> <span id="outputData"></span>
-      </div>
+        <div class="row fixed-bottom" id="bottom">
+            
+            <div class="col" id="t2"><img src="images/g1.svg" alt="g1" width="200px" height="100%" ></div>
+            </div>
+            
     </div>
-
-    <script src="./src/qrCodeScanner.js"></script>
-  </body>
+        
+            
+    
+    
+</body>
 </html>

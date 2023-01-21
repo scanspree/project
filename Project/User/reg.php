@@ -1,21 +1,22 @@
 <?php
 include("connection.php");
 session_start();
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-function sendMail($email,$v_code)
+function sendMail($email, $v_code)
 {
   require 'PHPMailer/PHPMailer.php';
   require 'PHPMailer/SMTP.php';
   require 'PHPMailer/Exception.php';
-  
+
   $mail = new PHPMailer(true);
 
   try {
     //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;  
+    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
@@ -27,14 +28,14 @@ function sendMail($email,$v_code)
     //Recipients
     $mail->setFrom('scanspree08@gmail.com');
     $mail->addAddress($email);     //Add a recipient
-    
+
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Email verification from ScanSpree';
     $mail->Body    = "Thanks for registration
     click the link below to verify the email address
     <a href='http://localhost/project/user/verify.php?email=$email&v_code=$v_code'>verify</a>";
-    
+
 
     $mail->send();
     echo "<script>alert('Check your mail to verify your account');</script>";
@@ -42,13 +43,12 @@ function sendMail($email,$v_code)
   } catch (Exception $e) {
     echo "<script>alert('exc');</script>";
     return false;
-}
-  
+  }
 }
 
 
 if (isset($_POST['submit'])) {
-  $check_query = "SELECT * FROM `customer_login` WHERE `username` = '$_POST[username]' OR `email` = '$_POST[email]'";
+  $check_query = "SELECT * FROM `customer_login` WHERE `email` = '$_POST[email]' OR `contact` = '$_POST[contact]'";
   $result2 = $conn->query($check_query);
   echo "1";
   if ($result2 == TRUE) {
@@ -56,56 +56,48 @@ if (isset($_POST['submit'])) {
     if ($result2->num_rows > 0) {
       echo "3";
       $row = $result2->fetch_assoc();
-        echo "4";
-      if($row['username']==$_POST['username']||$row['email']==$_POST['email']){
+      echo "4";
+      if ($row['contact'] == $_POST['contact'] || $row['email'] == $_POST['email']) {
         echo "5";
         echo "
         <script>
-        alert('username or email already exists');
+        alert('Email/Phone Number already exists');
         window.location.href='reg.php';
         </script>
         ";
       }
-    }else{
+    } else {
       echo "7";
-      $name = $_POST['fname'];
       $username = $_POST['username'];
-      $gender = $_POST['gender'];
-      $dob = $_POST['dob'];
       $email = $_POST['email'];
       $contact = $_POST['contact'];
-      $password = password_hash($_POST['password'],PASSWORD_BCRYPT);
-    
+      $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+
       $v_code = bin2hex(random_bytes(8));
-      $sql = "INSERT INTO `customer_login`(`name`, `username`, `gender`, `email`,`dob`, `contact`, `password`, `ver_code`, `is_verified`) VALUES ('$name','$username','$gender','$email','$dob',$contact,'$password','$v_code','0')";
-    
+      $sql = "INSERT INTO `customer_login`(`username`, `email`, `contact`, `password`, `ver_code`, `is_verified`) VALUES ('$username','$email',$contact,'$password','$v_code','0')";
+
       $result = $conn->query($sql); //fire query
-      $semail = sendMail($email,$v_code);
-    
+      $semail = sendMail($email, $v_code);
+
       if ($result == TRUE && $semail == true) {
         echo "
         <script>
         alert('Registration Successful');
         window.location.href='login.php';
         </script>";
-        
-        
       } else {
         echo "error: " . $sql . "<br>" . $conn->error;
       }
     }
-      
   } else {
     echo "<script>
     alert('Cannot run query');
     window.location.href='reg.php';
-    </script>" 
-    ;
+    </script>";
   }
 
-  
-   $conn->close();
-  
+
+  $conn->close();
 }
 
 
@@ -120,58 +112,111 @@ if (isset($_POST['submit'])) {
   <title>Document</title>
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="style1.css">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Sharp" rel="stylesheet">
   <script src="js/bootstrap.js"></script>
-  <style><?php include "style1.css" ?></style>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Harmattan&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Harmattan&display=swap');
+  </style>
+  <style>
+    <?php include "style1.css" ?>
+  </style>
 </head>
 
 <body>
 
-  <nav class="navbar ">
-    <div class="container">
-      <a class="navbar-brand" id="logo" href="#">
-        <img src="cartlogo.png" alt="ScanSpree" width="60" height="60" class="d-inline-block align-text-top">
-        <b>ScanSpree</b>
-      </a>
-    </div>
-  </nav>
+
+  <a class="btn " id="btn" href="homepg.php" name="back" type="button"><span class="material-icons-sharp mysize">
+      keyboard_backspace
+    </span></a>
+
+  <h2>
+    <div class="row justify-content-center mt-3">Create New Account</div>
+  </h2>
 
 
-  <div class="vh-100 container-fluid">
-    <h2>
-      <div class="row justify-content-center mt-3">Registration Form</div>
-    </h2>
-    <div class="container">
+
+  <div class="container-fluid fixed-bottom" style="height: 80%;">
+
+    <div class="container align-items-center"><br><br>
 
       <form method="POST" action="reg.php" name="regform" onsubmit="return validate();">
         <div class="row" id="row1">
-          <div class="col">
-            <div class="form-floating mb-3 mt-3">
-              <input type="text" class="form-control" id="firstname" name="fname" placeholder="Firstname" required>
-              <label for="firstname">Full Name</label>
+          <div class="col-1"></div>
+          <div class="col-10" id="cl">
+            <div class="mb-3 mt-3">
+              <div class="input_group">
+                <span class="material-icons-sharp mysize">account_circle</span>
+                <input type="text" id="username" name="username" placeholder="Name" required>
+              </div>
             </div>
           </div>
-          <div class="col">
-            <div class="form-floating mb-3 mt-3">
-            <input type="text" class="form-control" id="email" name="email" placeholder="email" required>
-              <label for="email">Email</label>
-            </div>
-          </div>
+          <div class="col-1"></div>
         </div>
 
-        <div class="row" id="row2">
-          <div class="col">
-            <div class="form-floating mb-3 mt-3">
-            <input type="text" class="form-control" id="contact" name="contact" placeholder="Phone Number" required>
-            <label for="contact">Phone number</label>
+        <div class="row align-items-center" id="row1">
+          <div class="col-1"></div>
+          <div class="col-10 align-items-center" id="cl">
+            <div class="mb-3 mt-3">
+              <div class="input_group">
+                <span class="material-icons-sharp mysize">mail_outline</span>
+                <input type="text" id="email" name="email" placeholder="Email" required>
+              </div>
             </div>
           </div>
-          <div class="col">
-            <div class="form-floating mb-3 mt-3">
-            <input type="text" class="form-control" id="username" name="username" placeholder="username" required>
-              <label for="contact">Username</label>
-            </div>
-          </div>
+          <div class="col-1"></div>
         </div>
+
+
+
+        <div class="row" id="row1">
+          <div class="col-1"></div>
+          <div class="col-10" id="cl">
+            <div class="mb-3 mt-3">
+              <div class="input_group">
+                <span class="material-icons-sharp mysize">call</span>
+                <input type="text" id="contact" name="contact" placeholder="Phone Number" required>
+              </div>
+            </div>
+          </div>
+          <div class="col-1"></div>
+        </div>
+
+
+        <div class="row" id="row1">
+          <div class="col-1"></div>
+          <div class="col-10" id="cl">
+            <div class="mb-3 mt-3">
+              <div class="input_group">
+                <span class="material-icons-sharp mysize">vpn_key</span>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+              </div>
+
+            </div>
+          </div>
+          <div class="col-1"></div>
+        </div>
+
+        <div class="row" id="row1">
+          <div class="col-1"></div>
+          <div class="col-10" id="cl">
+            <div class="mb-3 mt-3">
+              <div class="input_group">
+                <span class="material-icons-sharp mysize">check_circle_outline</span>
+                <input type="password" id="repassword" name="repassword" placeholder="Confirm Password" required>
+              </div>
+              <input type="checkbox" onclick="toggle();">Show Password
+            </div>
+          </div>
+          <div class="col-1"></div>
+
+        </div>
+        <br>
+
+        <!--
 
         <div class="row mt-2 " id="row3">
           <div class="col-1">
@@ -208,36 +253,17 @@ if (isset($_POST['submit'])) {
               <label for="contact">Date of birth</label>
             </div>
           </div>
+-->
 
-          <div class="row" id="row4">
-            <div class="col">
-              <div class="form-floating mb-3 mt-3">
-                <input type="password" class="form-control" id="password" name="password" placeholder="password" required>
-                <label for="password">Password</label>
-                <input type="checkbox" onclick="toggle();">Show Password
-              </div>
+        <div class="row mt-3">
+          <div class="col-3 "></div>
+          <div class="text-center d-grid gap-2 col-6 " id="col1">
 
-            </div>
-            <div class="col">
-              <div class="form-floating mb-3 mt-3">
-                <input type="password" class="form-control" id="repassword" name="repassword" placeholder="repassword" required>
-                <label for="repassword">Confirm Password</label>
-              </div>
-            </div>
+            <input class="btn btn-outline-dark" type="submit" id="btn" href="#" type="button" name="submit" value="Submit">
+
           </div>
-
-
-          <div class="row mt-3">
-            <div class="col-3 "></div>
-            <div class="col-6 text-center " id="col1">
-              <a class="btn " id="btn" href="homepg.php" name="back" role="button"><b>Back</b></a>
-              <input class="btn" type="submit" id="btn" href="#" role="button" name="submit" value="Submit">
-              <!--<input type="submit" name="submit" value="submit">-->
-            </div>
-            <div class="col-3"></div>
-          </div>
-
-
+          <div class="col-3"></div>
+        </div>
       </form>
 
     </div>
@@ -247,18 +273,17 @@ if (isset($_POST['submit'])) {
     function validate() {
       var pass = document.regform.password.value;
       var conpass = document.regform.repassword.value;
-      if(pass.length<8)
-      {
+      if (pass.length < 8) {
         alert("Password should be of atleat 8 characters");
         return false;
       }
-      
+
       if (pass != conpass) {
         alert("password is not similar");
         return false;
       }
 
-      
+
 
       var a = document.regform.email.value;
       var atpos = a.indexOf("@");
@@ -273,25 +298,26 @@ if (isset($_POST['submit'])) {
         alert("Enter valid contact numbers");
         return false;
       }
-   
-      var age= getAge(document.regform.dob.value);
-    if (age < 18) {
-      alert("you are not 18+");
-      return false;
-      } 
-    function getAge(dateString) {
-    var today = new Date(),
-      birthDate = new Date(dateString),
-      age = today.getFullYear() - birthDate.getFullYear(),
-      m = today.getMonth() - birthDate.getMonth();
-      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-          age--;
-       }
-        return age;
-      }
     }
+    /*var age = getAge(document.regform.dob.value);
+     if (age < 18) {
+       alert("you are not 18+");
+       return false;*/
 
+    /*
+          function getAge(dateString) {
+            var today = new Date(),
+              birthDate = new Date(dateString),
+              age = today.getFullYear() - birthDate.getFullYear(),
+              m = today.getMonth() - birthDate.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+              age--;
+            }
+            return age;
+          }
+        }
 
+    */
 
     function toggle() {
 
@@ -307,8 +333,6 @@ if (isset($_POST['submit'])) {
         y.type = "password";
       }
     }
-    
-
   </script>
 </body>
 
