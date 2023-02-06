@@ -78,7 +78,8 @@ if (isset($_POST['login'])) {
 
         <div class="container">
 
-            <form method="POST" action="" name="logform">
+        <br><br>    
+        <form method="POST" action="" name="logform">
                 <div class="row" id="row1">
                     <div class="col-1"></div>
                     <div class="col-10" id="cl">
@@ -120,6 +121,7 @@ if (isset($_POST['login'])) {
                     <div class="col-1"></div>
 
                 </div>
+                <br>
                 <div class="row mt-3">
                     <div class="col-3 "></div>
                     <div class="text-center d-grid gap-2 col-6 " id="col1">

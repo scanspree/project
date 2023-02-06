@@ -28,13 +28,15 @@ session_start();
 
   <script>
     function qr() {
-      document.getElementById("VidTut").style.display = "none";
+     
       document.getElementById("Scanner").style.display = "none";
-      document.getElementById("col1").style.display = "none";
+    
       document.getElementById("c").style.display = "none";
       document.getElementById("p").style.display = "none";
       document.getElementById("cont").style.display = "block";
     }
+   
+
   </script>
   <title>Main page</title>
 </head>
@@ -49,8 +51,10 @@ session_start();
     <div>
     <?php
     if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == TRUE) {
-      echo "<h4>$_SESSION[username]</h4>";
+      echo "<h4 id='user'>$_SESSION[username]</h4>";
     }
+
+
     ?>
   </div>
 </div>
@@ -60,6 +64,15 @@ session_start();
   <br>
 
   <br>
+  <div class="row" id="Scanner">
+        <div class="col-3"></div>
+  <div class="text-center d-grid gap-2 col-6">
+  <a class="btn btn-outline-dark " id="btnscan" onclick="" role="button"><b>Video tutorial</b></a>
+  <a class="btn btn-outline-dark" id="btnscan" onclick="qr();" role="button"><b>Scan QR</b></a>
+  </div>
+  <div class="col-3"></div>
+  </div>
+<!--
   <div class="row" id="VidTut">
     <div class="col-3 "></div>
     <div class="col-6 text-center " id="col1">
@@ -73,10 +86,13 @@ session_start();
   <div class="row" id="Scanner">
     <div class="col-3 "></div>
     <div class="col-6 text-center " id="col1">
-      <a class="btn btn-outline-dark" id="btnscan" onclick="qr();" role="button"><b>Scan QR To Begin</b></a>
+      <a class="btn btn-outline-dark" id="btnscan" onclick="qr();" role="button"><b>Scan QR</b></a>
     </div>
     <div class="col-3"></div>
   </div>
+  -->
+
+  
 
   <div class="row justify-content-center">
     <div class="col-3"></div>
@@ -84,15 +100,15 @@ session_start();
     Scan QR Code
     <br>
      <a id="btn-scan-qr">
-        <img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/07/1499401426qr_icon.svg">
+        <img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/07/1499401426qr_icon.svg" onclick="scan();">
         <a />
        
         <canvas hidden="" id="qr-canvas"></canvas>
 
         <div id="qr-result" hidden="">
-          <b>Data:</b> <span id="outputData"></span>
+          <b>Data:</b> <p id="outputData"></p>
         </div>
-        <script src="src/qrcodescanner.js"></script>
+        <script src="src/qrscanner.js"></script>
     </div>
     <div class="col-3"></div>
   </div>

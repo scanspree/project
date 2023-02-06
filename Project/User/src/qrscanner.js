@@ -8,6 +8,7 @@ const canvas = canvasElement.getContext("2d");
 const qrResult = document.getElementById("qr-result");
 const outputData = document.getElementById("outputData");
 const btnScanQR = document.getElementById("btn-scan-qr");
+ 
 
 let scanning = false;
 
@@ -55,7 +56,11 @@ function tick() {
 function scan() {
   try {
     var a=qrcode1.decode();
-    console.log(a?id=);
+    var uid=document.getElementById("user").innerText;
+    var link=a+"?id="+uid;
+    console.log(a);
+    console.log(uid);
+    window.open(link);
 
   } catch (e) {
     setTimeout(scan, 300);

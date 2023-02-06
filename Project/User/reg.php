@@ -82,7 +82,7 @@ if (isset($_POST['submit'])) {
       if ($result == TRUE && $semail == true) {
         echo "
         <script>
-        alert('Registration Successful');
+        
         window.location.href='login.php';
         </script>";
       } else {
