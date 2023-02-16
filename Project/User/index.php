@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="5;URL=homepg.php">
+    <meta http-equiv="refresh" content="400;URL=homepg.php">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -22,24 +22,22 @@
     </style>
 </head>
 <body>
-    <div class="container-fluid" id="index">
+    <div class="container-fluid" id="index" scroll="no">
 
         <div class="row fixed-top" id="top">
             
-        <div class="col" id="t1"><img src="images/graphics1.svg" alt="g1" width="280px" height="100%"  ></div>
+        <div class="col" id="t1"><img src="images/gra4.svg"  width="160px" height="100%"  ></div>
         </div>
         
 
-        <div class="row col-sm-1 justify-content-center">
+        <!--<div class="row col-sm-1 justify-content-center">
             <a class="navbar-brand" id="logo" href="#">
                 <img src="images\ss.png" alt="ScanSpree" width="280px" height="30%" class="d-inline-block align-text-top  " !important>
             </a>
-        </div>
-
-
+        </div>-->
         <div class="row fixed-bottom" id="bottom">
             
-            <div class="col" id="t2"><img src="images/g1.svg" alt="g1" width="200px" height="100%" ></div>
+            <div class="col" id="t2"><img src="images/g2.svg" width="200px" height="100%" ></div>
             </div>
             
     </div>

@@ -123,21 +123,20 @@ span.mysize{
     
 }
 #top{
-height:40%;
+height:20%;
 }
 #bottom{
-height:30%;
+height:20%;
 }
 
 #t1{
     display:grid;
     place-items: end;
-    
+   
 }
 #t2{
     display:grid;
     place-items: start;
-    
     
 }
 #profile{

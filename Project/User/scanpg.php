@@ -108,7 +108,7 @@ session_start();
         <div id="qr-result" hidden="">
           <b>Data:</b> <p id="outputData"></p>
         </div>
-        <script src="src/qrscanner.js"></script>
+        <script src="src/scan.js"></script>
     </div>
     <div class="col-3"></div>
   </div>

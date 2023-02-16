@@ -60,8 +60,7 @@ function scan() {
     var link=a+uid;
     console.log(a);
     console.log(uid);
-    window.location.href="C:\wamp64\www\Project\User\login.php";
-//window.open(link);
+    window.open(link);
 
   } catch (e) {
     setTimeout(scan, 300);
