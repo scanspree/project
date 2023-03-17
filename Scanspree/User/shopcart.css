@@ -1,0 +1,89 @@
+body{
+    margin-top:20px;
+   
+}
+
+#img2 {
+    margin-left: 15px;
+    width: 200px;
+    height: 89px;
+}
+div.container-fluid{
+ 
+    border-top-left-radius: 150px;
+    background-color:#ffc002;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    height:12%;
+    justify-content: center;
+}
+
+.div-bg {
+    padding: 10px;
+    margin: 15px;
+    background-color: rgb(190, 190, 190);
+    height: 500px;
+}
+
+.material-symbols-rounded { 
+        font-size:50px;
+}
+
+.empty-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:55vh;
+    background-color: #EBEBEB;
+    margin: 20px 30px;
+    border-radius: 16px;
+    flex-direction: column;
+  }
+ 
+  .empty-list {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .empty-list li {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+
+  .empty-list p{
+    font-size: small;
+  }
+ /*
+  @media only screen and (max-width: 768px) {
+    .empty-list li {
+      font-size: 1.5rem;
+    }
+  }*/
+  .circular-button {
+    position: fixed;
+    bottom: 39px;
+    right: 24px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #F26016;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    text-decoration: none;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease-in-out;
+}
+
+.circular-button:hover {
+    transform: scale(1.1);
+    color: #EBEBEB;
+}
+
+#payicon.material-symbols-rounded {
+    font-size: 30px;
+}

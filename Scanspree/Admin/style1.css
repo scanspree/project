@@ -1,0 +1,83 @@
+#logo
+{
+    
+    justify-content: center;
+}
+/*.navbar
+{
+    height: 115px;
+    background-color: #ffffff;
+    justify-content: center;
+    
+
+}*/
+
+/*Input Fields*/
+#firstname,#email,#contact,#password,#repassword,#username
+{
+    color: #000000;
+    background-color: #ffffff;
+    border: none;
+    outline: none;
+    
+    font-size: 18px;
+}
+::placeholder{
+    font-size: 20px;
+    color: black;
+    letter-spacing: 1px;
+    font-family: 'Harmattan', sans-serif;
+
+}
+
+.input_group{
+    margin-top: 8px;
+    display:flex;
+    align-items: center;
+    justify-content: start;
+    border-bottom: 2px solid #000000;
+}
+
+#user{
+    justify-content: right;
+
+}
+#h{
+    margin-left: 700px;
+}
+.fp{
+    text-align: center;
+    background-color:transparent;
+    outline:none;
+    cursor:pointer;
+    border:none;
+
+}
+div.container-fluid{
+    height: 100%;
+    background-color:white;
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+
+#custdtls,#orderdtls,#adpd,#tgpd,#pdlt,#adct {
+    display: none;
+    background-color: white;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    height: 100%;
+    width: 1200px;
+    margin: 0 auto;
+    color: black;
+}
+
+#hd{
+    display:inline-block;
+}
+
+.btn, #btn{
+    border-radius: 9px;
+    border-width: 2px;
+}
