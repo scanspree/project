@@ -467,7 +467,7 @@ if (isset($_POST['addcart'])) {
     <header class="header">
       <div class="header-right">
       <span class="material-symbols-rounded">account_circle</span>
-        <a href='logout.php' role='button'>
+        <a href='logout.php' role='button' id="back">
         <span class="material-symbols-rounded">logout</span>
   </div>
 
@@ -669,14 +669,17 @@ if (isset($_POST['addcart'])) {
     <div class="row justify-content-center">
       <div class="col-md-6" id="adpd">
         <br>
-        <h4 id="hd">Add Product</h4><br>
         <form method="POST" action="dash.php" name="addprod" onsubmit="return adprod();" id="addform">
-             <div class="row mt-3">
+        <div class="row">
+        <h4 class="col-6"id="hd"><strong>Add Product</strong></h4>
+        
+             
             <div class="col-6 text-end ">
             <a class="btn btn-warning" id="btn" role="button" onclick="pl();">Back</a>
               <input class="btn btn-warning" type="submit" id="btn" role="button" name="add" value="Add">
             </div>
-          </div>
+            </div>
+          
           <div class="form-floating mb-3 mt-3">
             <input type="text" class="form-control" id="product_id" name="product_id" placeholder="product_id" required>
             <label for="product_id">Product ID</label>
@@ -728,9 +731,10 @@ if (isset($_POST['addcart'])) {
               $prod_price=$row['product_price'];
         ?>
 <br>
-        <h4 id="hd">Add Tags</h4><br>
-      <form method="POST" action="dash.php" name="editprod" onsubmit="return edprod();" id="editform">
-           <div class="row mt-3">
+       <div class="row">
+           <form method="POST" action="dash.php" name="editprod" onsubmit="return edprod();" id="editform">
+        <h4 class="col-6" id="hd"><strong>Add Tags</strong></h4><br>
+           
             <div class="col-6 text-end ">
             <a class="btn btn-warning" id="btn" role="button" onclick="plb();">Back</a>
               <input class="btn btn-warning" type="submit" id="btn" role="button" name="addtag" value="Save">
@@ -934,7 +938,7 @@ var myChart = new Chart(ctx, {
     <div class="row justify-content-center">
       <div class="col-md-6 " id="adct">
         <br>
-        <h4 id="hd">Add Cart</h4>
+        <h4 id="hd"><strong>Add Cart</strong></h4>
         <form method="post">
         <div class="form-floating mb-3 mt-3">
           <input type="text" class="form-control" id="cart_id" name="cart_id" placeholder="cart_id" required>
@@ -946,8 +950,8 @@ var myChart = new Chart(ctx, {
         </div>
 
         <div class="row mt-3">
-          <div class="col-6 text-end ">
-            <input class="btn" type="submit" id="btn" role="button" name="addcart" value="Add">
+          <div class="col-6 text-end">
+            <input class="btn btn-warning" type="submit" id="btn" role="button" name="addcart" value="Add">
           </div>
         </div>
         </form>

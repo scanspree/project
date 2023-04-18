@@ -81,7 +81,7 @@ if (isset($_POST['login'])) {
         <form method="POST" action="" name="logform">
                 <div class="row" id="row1">
                     <div class="col-1"></div>
-                    <div class="col-10" id="cl">
+                    <div class="col-9" id="cl">
                         <div class="mb-3 mt-3">
                             <div class="input_group">
                             <span class="material-symbols-rounded p-1">mail</span>
@@ -94,8 +94,8 @@ if (isset($_POST['login'])) {
 
                 <div class="row" id="row1">
                     <div class="col-1"></div>
-                    <div class="col-10" id="cl">
-                        <div class="mt-3">
+                    <div class="col-9" id="cl">
+                        <div class="mb-3 mt-3">
                             <div class="input_group">
                             <span class="material-symbols-rounded p-1">vpn_key</span>
                                 <input type="password" id="password" name="password" placeholder="Password" required>

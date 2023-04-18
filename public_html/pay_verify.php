@@ -59,7 +59,7 @@ if ($success === true)
     $result = $conn->query($sql); //fire query
      if ($result == TRUE) {
                } else {
-            echo "error: " . $sql . "<br>" . $conn->error;
+          //  echo "error: " . $sql . "<br>" . $conn->error;
             }
       }
       
@@ -75,31 +75,63 @@ if ($success === true)
               $row2 = $result2->fetch_assoc();
               $p_id=$row2['product_id'];
               $pri=$row2['product_price'];
-  $sql3="INSERT INTO `ordered_product`(`order_id`, `product_id`, `tag_id`, `order_date`, `price`) VALUES ($orderid,$p_id,'$t','$current_date',$pri)";
-   $result3 = $conn->query($sql3); //fire query
+  $sq="INSERT INTO `ordered_product`(`order_id`, `product_id`, `tag_id`, `order_date`, `price`) VALUES ($orderid,$p_id,'$t','$current_date',$pri)";
+   $result3 = $conn->query($sq); //fire query
   if ($result3 == TRUE) {
       
     
   } else {
-            echo "error: " . $sql3 . "<br>" . $conn->error;
+            //echo "error: " . $sql3 . "<br>" . $conn->error;
             }
               }
              
             
                } else {
-            echo "error: " . $sql2 . "<br>" . $conn->error;
+            //echo "error: " . $sql2 . "<br>" . $conn->error;
             }
       }
       
      } else {
-            echo "error: " . $sql1 . "<br>" . $conn->error;
+           // echo "error: " . $sql1 . "<br>" . $conn->error;
             }
   
    
 
 
-    $html = "
-              <!DOCTYPE html>
+    $true = "  <div class='container' >
+
+            <div class='icon'>
+                <span class='material-symbols-rounded' id='staricon1'>auto_awesome</span>
+            </div>
+            <div class='icon'>
+                <span class='material-symbols-rounded' id='paymentdone'>credit_score</span>
+            </div>
+            <div class='icon'>
+                <span class='material-symbols-rounded' id='staricon2'>auto_awesome</span>
+            </div>
+        </div>
+<div class='row mt-3 fixed-bottom'>
+            <div class='col-3 '></div>
+
+            <div class='text-center d-grid col-12 p-5' id='col'>
+                <h4>Payment Successful!</h4>
+                <input class='btn btn-outline-dark' type='submit' id='btn' onclick='resetESP()' type='button' name='ok'
+                    value='OK' style='font-weight: bold'>
+            </div>
+            <div class='col-3'></div>
+
+
+        </div>
+            
+              ";
+}
+else
+{
+   // $html = "<p>Your payment failed</p>
+   //         <p>{$error}</p>";
+}
+ ?>
+ <!DOCTYPE html>
 <html lang='en'>
 
 <head>
@@ -121,7 +153,7 @@ if ($success === true)
     },1000);
     }
     </script>
-    <title>Document</title>
+    <title>Payment Verify</title>
  
     <style>
         <?php include 'payment.css' ?>
@@ -138,34 +170,11 @@ if ($success === true)
 
       
 
-        <div class='container' >
-
-            <div class='icon'>
-                <span class='material-symbols-rounded' id='staricon1'>auto_awesome</span>
-            </div>
-            <div class='icon'>
-                <span class='material-symbols-rounded' id='paymentdone'>credit_score</span>
-            </div>
-            <div class='icon'>
-                <span class='material-symbols-rounded' id='staricon2'>auto_awesome</span>
-            </div>
-        </div>
+       
 
 
-
-
-        <div class='row mt-3 fixed-bottom'>
-            <div class='col-3 '></div>
-
-            <div class='text-center d-grid col-12 p-5' id='col'>
-                <h4>Payment Successful!</h4>
-                <input class='btn btn-outline-dark' type='submit' id='btn' onclick='resetESP()' type='button' name='ok'
-                    value='OK' style='font-weight: bold'>
-            </div>
-            <div class='col-3'></div>
-
-
-        </div>
+<?php echo $true;?>
+       
     </div>
 
 
@@ -176,16 +185,6 @@ if ($success === true)
 </body>
 
 </html>
-              ";
-}
-else
-{
-   // $html = "<p>Your payment failed</p>
-   //          <p>{$error}</p>";
-}
 
-echo $html;?>
-<script>
-  
-</script>
+
 

@@ -76,3 +76,4 @@ if ($displayCurrency !== 'INR')
 $json = json_encode($data);
 
 require("razorpay/checkout/{$checkout}.php");
+?>

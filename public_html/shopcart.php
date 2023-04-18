@@ -127,7 +127,7 @@ $('.price').each(function() {
                         $('#esp').text(esp);
                         $('#cart_id').val($('#esp').text());
                }else{
-                  $("#empty").append("<tr id='emp'><td id='emp'><div class='empty-container' scroll='no' id='empty-block'><ul class='empty-list'><span class='material-symbols-rounded'>upcoming</span> <li>Your cart is empty</li><p>Looks like you've not added any items yet!</p></ul></div><td></tr>");
+                  $("#empty").append("<tr id='emp'><td id='emp'><div class='empty-container' scroll='no' id='empty-block'><ul class='empty-list'><span class='material-symbols-rounded'>upcoming</span> <li>Your cart is empty</li><p>Looks like you've not added any items yet!</p></ul></div></td></tr>");
                   var total = 0;
                         $('#total-price').text(total);
        //   $('amount').text(total);
@@ -166,13 +166,13 @@ $('.price').each(function() {
 
     <div class="container-sm">
         <div class="row">
-        <div class="col-7"><img src="Images/logo2.svg" id="img2" alt="ScanSpree"></div>
+        <div class="col-7"><img src="Images/logo2.png" id="img2" alt="ScanSpree"></div>
         <div class="col-2"></div>
-        <div class=" col-3" style="position: relative;">
-      <span class="material-symbols-rounded" id="acc">account_circle</span><br>
+        <div class=" col-3 text-center" style="position: relative;">
+      <span class="material-symbols-rounded mb-3 " id="acc">account_circle</span><br>
       <?php
           if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == TRUE) {
-             echo "<p  id='user'><b>$_SESSION[username]<b></p>";
+             echo "<p  class='p-2' id='user'><b>$_SESSION[username]<b></p>";
 
              $sql = "SELECT * FROM `customer_login` WHERE `username`='$_SESSION[username]'";
              $result = $conn->query($sql);
@@ -216,8 +216,9 @@ $('.price').each(function() {
         <br>
         <div class="row">
             <div class="col-1"></div>
-              <div class="col-6"><strong><h4 id="total-price"></h4></strong></div>
-                <div class="col-3"></div>
+            <div class="col-1" style="font-size: 22px;">Rs.</div>
+              <div class="col-6"><h4 id="total-price"></h4></div>
+                <div class="col-4"></div>
         </div>
        
     <!--a href="#" class="circular-button peach-gradient">

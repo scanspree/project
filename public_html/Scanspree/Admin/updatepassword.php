@@ -53,23 +53,30 @@
 
         <a class='back' id='back' href='login.php' name='back' type='button' ><span class='material-symbols-rounded'>keyboard_backspace
         </span></a>
+ <nav class='navbar vh-15 mt-3'>
+        <div class='container col-sm-1 justify-content-center'>
+            <a class='navbar-brand' id='logo' href='#'>
+                <img src='Images/ss.png' alt='ScanSpree' width='300' height='120' class='d-inline-block align-text-top'>
+            </a>
+        </div>       
+    </nav>
 
-        <h2>
-        <div class='row justify-content-center mt-3'>Reset password</div>
-        </h2>
-
-        <div class='container-fluid fixed-bottom' style='height: 80%;'>
+       
+        <div class='container-fluid fixed-bottom' style='height: 75%;'>
         <div class='container align-items-center'><br><br>
+ <h2>
+        <div class='row justify-content-center mt-3'>Admin Reset password</div>
+        </h2>
 
         <form method='POST' action='updatepassword.php' name='updateform' onsubmit='return validate();'>
 
-        <div class='row justify-content-center' id='row1'>
-        <div class='col-1 p-4'></div>
-          <div class='col-9' id='cl'>
+        <div class='row' id='row1'>
+        <div class='col-1'></div>
+          <div class='col-10' id='cl'>
             <div class='mb-2 mt-2'>
               <div class='input_group'>
               <span class='material-symbols-rounded p-1'>vpn_key</span>
-                <input class='col-9' type='password' id='password' name='password' placeholder='Password' required>
+                <input class='col-11' type='password' id='password' name='password' placeholder='Password' required>
               <span class='material-symbols-rounded' onclick='toggle();' id='eyeicon'>visibility_off</span>
               </div>  
             </div>
@@ -92,11 +99,11 @@
           <div class='col-1'></div>
 
           <div class='row mt-3 fixed-bottom'>
-                    <div class='col-3'></div>
-                    <div class='text-center d-grid col-12 p-5' id='col1'>
+                    <div class='col-4'></div>
+                     <div class='text-center d-grid gap-2 col-4 p-5'  id='col1'>
                         <input class='btn btn-outline-dark' type='submit' id='btn' href='#' type='button' name='update' value='RESET' style='font-weight: bold'>
                     </div>
-                    <div class='col-3'></div>
+                    <div class='col-4'></div>
                 </div>
             
             </form>

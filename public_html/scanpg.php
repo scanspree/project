@@ -41,8 +41,8 @@ session_start();
 <body class="container-fluid">
 
   <div class="out mt-3" id="c">
-    <a href='logout.php' role='button'>
-    <span class="material-symbols-rounded">logout</span></a>
+    <a href='logout.php' role='button' id='logout'>
+    <span class="material-symbols-rounded" >logout</span></a>
   </div>
   
   <br><br><br><br>

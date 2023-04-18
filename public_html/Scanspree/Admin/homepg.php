@@ -32,13 +32,14 @@
         </div>
 
         <div class="row p-5 fixed-bottom">
-        <div class="col-3"></div>
-            <div class="text-center d-grid gap-2 col-6 ">
+        <div class="col-4"></div>
+        <div class="text-center d-grid gap-2 col-4 p-5" id="col1">
+           
                 <a class="btn btn-outline-dark"  href="login.php" type="button"><b>LOGIN</b></a>
                 <!--a class="btn btn-outline-dark" href="reg.php" type="button"><b>SIGNUP</b></a-->
                 
             </div>
-        <div class="col-3"></div>
+        <div class="col-4"></div>
         </div>
 
 

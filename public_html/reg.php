@@ -50,15 +50,15 @@ function sendMail($email, $v_code)
 if (isset($_POST['submit'])) {
   $check_query = "SELECT * FROM `customer_login` WHERE `email` = '$_POST[email]' OR `contact` = '$_POST[contact]'";
   $result2 = $conn->query($check_query);
-  echo "1";
+ // echo "1";
   if ($result2 == TRUE) {
-    echo "2";
+  //  echo "2";
     if ($result2->num_rows > 0) {
-      echo "3";
+   //   echo "3";
       $row = $result2->fetch_assoc();
-      echo "4";
+   //   echo "4";
       if ($row['contact'] == $_POST['contact'] || $row['email'] == $_POST['email']) {
-        echo "5";
+     //   echo "5";
         echo "
         <script>
         alert('Email/Phone Number already exists');
@@ -67,7 +67,7 @@ if (isset($_POST['submit'])) {
         ";
       }
     } else {
-      echo "7";
+     // echo "7";
       $username = $_POST['username'];
       $email = $_POST['email'];
       $contact = $_POST['contact'];
@@ -148,7 +148,7 @@ if (isset($_POST['submit'])) {
       <form method="POST" action="reg.php" name="regform" onsubmit="return validate();">
         <div class="row" id="row1">
           <div class="col-1"></div>
-          <div class="col-10" id="cl">
+          <div class="col-9" id="cl">
             <div class="mb-2 mt-3">
               <div class="input_group">
               <span class="material-symbols-rounded p-1">account_circle</span>
@@ -161,7 +161,7 @@ if (isset($_POST['submit'])) {
 
         <div class="row align-items-center" id="row1">
           <div class="col-1"></div>
-          <div class="col-10" id="cl">
+          <div class="col-9" id="cl">
             <div class="mb-2 mt-2">
               <div class="input_group">
               <span class="material-symbols-rounded p-1">mail</span>
@@ -176,7 +176,7 @@ if (isset($_POST['submit'])) {
 
         <div class="row" id="row1">
           <div class="col-1"></div>
-          <div class="col-10" id="cl">
+          <div class="col-9" id="cl">
             <div class="mb-2 mt-2">
               <div class="input_group">
               <span class="material-symbols-rounded p-1">call</span>
@@ -188,10 +188,10 @@ if (isset($_POST['submit'])) {
         </div>
 
 
-        <div class="row justify-content-center" id="row1">
-        <div class="col-1 p-4"></div>
-          <div class="col-9" id="cl">
-            <div class="mb-2 mt-2 ">
+        <div class="row " id="row1">
+        <div class="col-1"></div>
+          <div class="col-10" id="cl">
+            <div class="mb-2 mt-2">
               <div class="input_group">
               <span class="material-symbols-rounded p-1">vpn_key</span>
                 <input class="col-9" type="password" id="password" name="password" placeholder="Password" required>
@@ -204,7 +204,7 @@ if (isset($_POST['submit'])) {
 
         <div class="row" id="row1">
           <div class="col-1"></div>
-          <div class="col-10" id="cl">
+          <div class="col-9" id="cl">
             <div class="mb-2 mt-2">
               <div class="input_group">
               <span class="material-symbols-rounded p-1">verified</span>

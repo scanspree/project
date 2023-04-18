@@ -37,7 +37,7 @@ include ("connection.php");
     if ($result == TRUE) {
       if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        if ($row['.$flag.'] == 1) {
+        if ($row['.$flag.'] != 0) {
           echo "<script> document.getElementById('.$buz.').click();
 </script>";
         }

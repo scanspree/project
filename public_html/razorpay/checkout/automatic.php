@@ -1,22 +1,65 @@
 <!--  The entire list of Checkout fields is available at
  https://docs.razorpay.com/docs/checkout-form#checkout-fields -->
 <style>
-form{
-     margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
-}
 
 .razorpay-payment-button{
-    height:200px;
-    width:700px;
-    font-size:30px;
-    background-color:#FFC220;
+    border:none;
+    color:white;
+    font-size:1px;
+    background-color: white;
 }
 </style>
+
+<!--DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Sharp" rel="stylesheet">
+    <script src="js/bootstrap.js"></script>
+    <title>Payment</title>
+    <style>
+        
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid" id="pay" scroll="no">
+        <div class="top">
+            <img src="paywave.jpg" alt="ScanSpree" width="100%" height="180px" class="d-inline-block align-text-top" !important>
+        </div>
+
+
+      
+
+
+
+        <div class="row mt-3 fixed-bottom">
+           
+
+
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html-->
+<!--script>
+    setInterval(function(){
+       document.getElementsByClassName("razorpay-payment-button").click();
+    },500);
+</script-->
+
 <form action="pay_verify.php" method="POST">
   <script
     src="https://checkout.razorpay.com/v1/checkout.js"
@@ -41,3 +84,10 @@ form{
   <input type="hidden" name="cart_id" value="<?php echo $data['cartid']?>">
   <input type="hidden" name="totalamount" value="<?php echo $data['totamount']?>">
 </form>
+<script>
+    setInterval(function(){
+       var button = document.querySelector('.razorpay-payment-button');
+// Trigger a click event on the button
+button.click();
+    },2000);
+</script>
