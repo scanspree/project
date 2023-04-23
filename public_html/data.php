@@ -3,7 +3,7 @@
 //$ser_data=array();
  //   $d=;
  $UIDresultdata=array();
- $user="Kaushal";
+ $user="Ashley";
   $esp="ESP30";
 $d=file_get_contents("dum.txt");
 $sda=explode("\n",$d);;

@@ -671,7 +671,7 @@ if (isset($_POST['addcart'])) {
         <br>
         <form method="POST" action="dash.php" name="addprod" onsubmit="return adprod();" id="addform">
         <div class="row">
-        <h4 class="col-6"id="hd"><strong>Add Product</strong></h4>
+        <h4 class="col-6"id="hd"><strong>ADD PRODUCT</strong></h4>
         
              
             <div class="col-6 text-end ">
@@ -730,10 +730,10 @@ if (isset($_POST['addcart'])) {
               $prod_name=$row['product_name'];
               $prod_price=$row['product_price'];
         ?>
-<br>
+<br><form method="POST" action="dash.php" name="editprod" onsubmit="return edprod();" id="editform">
        <div class="row">
-           <form method="POST" action="dash.php" name="editprod" onsubmit="return edprod();" id="editform">
-        <h4 class="col-6" id="hd"><strong>Add Tags</strong></h4><br>
+           
+        <h4 class="col-6" id="hd"><strong>ADD TAGS</strong></h4><br>
            
             <div class="col-6 text-end ">
             <a class="btn btn-warning" id="btn" role="button" onclick="plb();">Back</a>
@@ -938,7 +938,7 @@ var myChart = new Chart(ctx, {
     <div class="row justify-content-center">
       <div class="col-md-6 " id="adct">
         <br>
-        <h4 id="hd"><strong>Add Cart</strong></h4>
+        <h4 id="hd"><strong>ADD CART</strong></h4>
         <form method="post">
         <div class="form-floating mb-3 mt-3">
           <input type="text" class="form-control" id="cart_id" name="cart_id" placeholder="cart_id" required>

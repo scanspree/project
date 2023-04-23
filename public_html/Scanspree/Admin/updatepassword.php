@@ -76,7 +76,7 @@
             <div class='mb-2 mt-2'>
               <div class='input_group'>
               <span class='material-symbols-rounded p-1'>vpn_key</span>
-                <input class='col-11' type='password' id='password' name='password' placeholder='Password' required>
+                <input class='col-11' type='password' id='password' name='password' placeholder='New Password' required>
               <span class='material-symbols-rounded' onclick='toggle();' id='eyeicon'>visibility_off</span>
               </div>  
             </div>
